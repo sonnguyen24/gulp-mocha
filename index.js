@@ -64,7 +64,7 @@ module.exports = opts => {
 			done();
 		})
 			.catch(err => {
-				this.emit('error', new PluginError('gulp-mocha', err));
+				this.emit('error', new PluginError('gulp-mocha', err.code === 1 ? 'There were test failures' : err));
 				done();
 			});
 
