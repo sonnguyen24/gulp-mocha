@@ -12,9 +12,18 @@ function objectEntries(object) {
 	return entries;
 }
 
+function convertValue(key, value) {
+	if (typeof value === 'object') {
+		return objectEntries(value)
+			.map(e => convertValue(key.concat([ e[0] ]), e[1]))
+			.join(',');
+	} else {
+		return key.join('.') + '=' + value.toString();
+	}
+}
 function convertObjectToList(object) {
 	return objectEntries(object)
-		.reduce((result, current) => result.concat(`${current[0]}=${current[1]}`), [])
+		.map(e => convertValue([ e[0] ], e[1]))
 		.join(',');
 }
 
