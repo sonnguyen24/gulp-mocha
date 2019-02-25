@@ -1,14 +1,10 @@
 {
-	"name": "gulp-mocha",
-	"version": "6.0.0",
+	"name": "@johanblumenberg/gulp-mocha",
+	"version": "1.0.0",
 	"description": "Run Mocha tests",
 	"license": "MIT",
-	"repository": "sindresorhus/gulp-mocha",
-	"author": {
-		"name": "Sindre Sorhus",
-		"email": "sindresorhus@gmail.com",
-		"url": "sindresorhus.com"
-	},
+	"repository": "johanblumenberg/gulp-mocha",
+	"author": "johan.blumenberg@gmail.com",
 	"engines": {
 		"node": ">=6"
 	},
