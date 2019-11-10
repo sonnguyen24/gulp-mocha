@@ -24,14 +24,16 @@ module.exports = opts => {
 	for (const key of Object.keys(opts)) {
 		const val = opts[key];
 
-		if (Array.isArray(val)) {
-			if (!MULTIPLE_OPTS.has(key)) {
-				// Convert arrays into comma separated lists
-				opts[key] = val.join(',');
+		if (key !== '_') {
+			if (Array.isArray(val)) {
+				if (!MULTIPLE_OPTS.has(key)) {
+					// Convert arrays into comma separated lists
+					opts[key] = val.join(',');
+				}
+			} else if (typeof val === 'object') {
+				// Convert an object into comma separated list
+				opts[key] = utils.convertObjectToList(val);
 			}
-		} else if (typeof val === 'object') {
-			// Convert an object into comma separated list
-			opts[key] = utils.convertObjectToList(val);
 		}
 	}
 
@@ -55,7 +57,7 @@ module.exports = opts => {
 
 	function flush(done) {
 		const env = npmRunPath.env({cwd: __dirname});
-		const proc = execa('mocha', files.concat(args), {
+		const proc = execa('mocha', files.concat(args).concat(opts._ || []), {
 			env,
 			maxBuffer: HUNDRED_MEGABYTES
 		});
