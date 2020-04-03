@@ -1,4 +1,5 @@
 'use strict';
+const fs = require('fs');
 const dargs = require('dargs');
 const execa = require('execa');
 const PluginError = require('plugin-error');
@@ -75,6 +76,11 @@ module.exports = opts => {
 		if (!opts.suppress) {
 			proc.stdout.pipe(process.stdout);
 			proc.stderr.pipe(process.stderr);
+		}
+		if (opts.output) {
+			const file = fs.createWriteStream(opts.output);
+			proc.stdout.pipe(file);
+			proc.stderr.pipe(file);
 		}
 	}
 
