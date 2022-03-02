@@ -1,10 +1,13 @@
 {
-	"name": "@johanblumenberg/gulp-mocha",
+	"name": "@sym20/gulp-mocha",
 	"version": "1.0.3",
 	"description": "Run Mocha tests",
 	"license": "MIT",
-	"repository": "johanblumenberg/gulp-mocha",
-	"author": "johan.blumenberg@gmail.com",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/SymphonyOSF/gulp-mocha.git"
+	},
+	"author": "Symphony",
 	"engines": {
 		"node": ">=6"
 	},
@@ -32,7 +35,7 @@
 	"dependencies": {
 		"dargs": "^5.1.0",
 		"execa": "^0.10.0",
-		"@johanblumenberg/mocha": "^1.0.0",
+		"@sym20/mocha": "^1.0.0",
 		"npm-run-path": "^2.0.2",
 		"plugin-error": "^1.0.1",
 		"supports-color": "^5.4.0",
